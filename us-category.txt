@@ -1,0 +1,153 @@
+category	count	pct
+Physics	147364	7.116
+Chemistry	141303	6.824
+Psychology	111086	5.364
+Engineering	104121	5.028
+Business Economics	87437	4.222
+Government Law	74447	3.595
+Education Educational Research	73985	3.573
+General Internal Medicine	73446	3.547
+Biochemistry Molecular Biology	68693	3.317
+Life Sciences Biomedicine Other Topics	62610	3.023
+History	60037	2.899
+Literature	51582	2.491
+Agriculture	51388	2.482
+Mathematics	50932	2.460
+Research Experimental Medicine	48119	2.324
+Pharmacology Pharmacy	47583	2.298
+Materials Science	43003	2.077
+Science Technology Other Topics	37825	1.827
+Environmental Sciences Ecology	37505	1.811
+Neurosciences Neurology	37035	1.788
+Sociology	35895	1.733
+Surgery	35338	1.706
+Cardiovascular System Cardiology	31490	1.521
+Social Sciences Other Topics	31237	1.508
+Oncology	31017	1.498
+Biophysics	29413	1.420
+Psychiatry	29265	1.413
+Radiology Nuclear Medicine Medical Imaging	28428	1.373
+Public Environmental Occupational Health	26964	1.302
+Astronomy Astrophysics	26655	1.287
+Geochemistry Geophysics	26090	1.260
+Immunology	25761	1.244
+Plant Sciences	25639	1.238
+Zoology	25557	1.234
+Pediatrics	25136	1.214
+Cell Biology	25075	1.211
+Nuclear Science Technology	23479	1.134
+Linguistics	21357	1.031
+Physiology	19716	0.952
+Arts Humanities Other Topics	19673	0.950
+Pathology	18438	0.890
+Dentistry Oral Surgery Medicine	18354	0.886
+Food Science Technology	17798	0.859
+Geology	17294	0.835
+Computer Science	17030	0.822
+Microbiology	16560	0.800
+Information Science Library Science	16386	0.791
+Genetics Heredity	15878	0.767
+Philosophy	14856	0.717
+Rehabilitation	14672	0.709
+Veterinary Sciences	14311	0.691
+Anthropology	13872	0.670
+Endocrinology Metabolism	13805	0.667
+Religion	13771	0.665
+Optics	13411	0.648
+Acoustics	13122	0.634
+Area Studies	12823	0.619
+Gastroenterology Hepatology	12653	0.611
+Communication	12375	0.598
+Entomology	12351	0.596
+Toxicology	12344	0.596
+Ophthalmology	12337	0.596
+Obstetrics Gynecology	12187	0.589
+International Relations	11883	0.574
+Social Work	11653	0.563
+Meteorology Atmospheric Sciences	11506	0.556
+Public Administration	11493	0.555
+Behavioral Sciences	11383	0.550
+Respiratory System	10902	0.526
+Mechanics	10739	0.519
+Hematology	10244	0.495
+Audiology Speech Language Pathology	10107	0.488
+Instruments Instrumentation	10058	0.486
+Urology Nephrology	10004	0.483
+Medical Laboratory Technology	10003	0.483
+Metallurgy Metallurgical Engineering	9940	0.480
+Social Issues	9159	0.442
+Health Care Sciences Services	8847	0.427
+Anatomy Morphology	8597	0.415
+Polymer Science	8300	0.401
+Energy Fuels	8164	0.394
+Marine Freshwater Biology	8090	0.391
+Nutrition Dietetics	8004	0.387
+Electrochemistry	7871	0.380
+Sport Sciences	7567	0.365
+Operations Research Management Science	7496	0.362
+Telecommunications	7457	0.360
+Geography	7355	0.355
+Geriatrics Gerontology	6728	0.325
+Asian Studies	6516	0.315
+Family Studies	6421	0.310
+Criminology Penology	6405	0.309
+Biotechnology Applied Microbiology	6366	0.307
+Virology	6145	0.297
+Otorhinolaryngology	6134	0.296
+Orthopedics	6110	0.295
+Evolutionary Biology	5992	0.289
+Infectious Diseases	5964	0.288
+Oceanography	5923	0.286
+Archaeology	5862	0.283
+History Philosophy Of Science	5840	0.282
+Theater	5767	0.278
+Dermatology	5709	0.276
+Urban Studies	5166	0.249
+Music	5163	0.249
+Art	5049	0.244
+Water Resources	5010	0.242
+Substance Abuse	4995	0.241
+Thermodynamics	4976	0.240
+Nursing	4963	0.240
+Spectroscopy	4749	0.229
+Reproductive Biology	4377	0.211
+Fisheries	4321	0.209
+Anesthesiology	4277	0.207
+Automation Control Systems	4100	0.198
+Demography	4041	0.195
+Developmental Biology	4038	0.195
+Crystallography	3815	0.184
+Mathematical Computational Biology	3795	0.183
+Biomedical Social Sciences	3540	0.171
+Mathematical Methods In Social Sciences	3184	0.154
+Transportation	3065	0.148
+Parasitology	2997	0.145
+Transplantation	2939	0.142
+Ethnic Studies	2788	0.135
+Imaging Science Photographic Technology	2636	0.127
+Forestry	2609	0.126
+Rheumatology	2603	0.126
+Mineralogy	2476	0.120
+Physical Geography	2472	0.119
+Development Studies	2450	0.118
+Classics	2217	0.107
+Allergy	2213	0.107
+Construction Building Technology	2138	0.103
+Remote Sensing	2028	0.098
+Biodiversity Conservation	1856	0.090
+Cultural Studies	1828	0.088
+Microscopy	1731	0.084
+Tropical Medicine	1645	0.079
+Mycology	1640	0.079
+Film Radio Television	1635	0.079
+Paleontology	1466	0.071
+Architecture	1362	0.066
+Mining Mineral Processing	1243	0.060
+Women S Studies	1142	0.055
+Emergency Medicine	947	0.046
+Medical Informatics	697	0.034
+Legal Medicine	644	0.031
+Medical Ethics	522	0.025
+Dance	253	0.012
+Integrative Complementary Medicine	181	0.009
+2,539 record(s) (0.123%) do not contain data in the field being analyzed

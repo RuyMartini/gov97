@@ -1,0 +1,296 @@
+---
+title: "Assignment Gov 97"
+author: "Ruy Martinez"
+date: "2023-04-06"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r lib}
+
+library(tidyverse)
+library(readr)
+library(data.table)
+library(ggthemes)
+```
+
+```{r articles}
+#load in data ONCE and from then on, load directly from a file for speed.
+pol_vect <- c(1:37)
+pol_list <- list()
+for (i in pol_vect) {
+  pol <- paste0("poland", i)
+  wd <- paste0("data/poland/poland", i, ".txt")
+  pol_list[[i]] <- assign(pol, read_tsv(wd))
+}
+
+poland_articles <- rbindlist(pol_list)
+## For loop to merge all 44 poland sets, downloaded by hand, 1000 entries at a 
+## time. Then it puts them into a list, then it full_joins over that list.
+
+## the paste0 just makes a vector that goes poland1, poland2, etc.
+## wd is a vector of data/poland/polandi.txt. Basically, we assign every name
+## to the actual load command to load it into a list.
+
+## Then we use data.table's rbindlist to... bind the rows from this list.
+
+## Now we do this for Romanian articles.
+
+rom_vect <- c(1:9)
+rom_list <- list()
+for (i in rom_vect) {
+  rom <- paste0("romania", i)
+  wd <- paste0("data/romania/romania", i, ".txt")
+  rom_list[[i]] <- assign(rom, read_tsv(wd))
+}
+
+romania_articles <- rbindlist(rom_list)
+
+write.csv(poland_articles, "data/poland_articles.csv", row.names = FALSE)
+
+write.csv(romania_articles, "data/romania_articles.csv", row.names = FALSE)
+
+## Turn into CSV's so we never have to do this again.
+```
+
+```{r journals}
+
+poland_articles <- read.csv("data/poland_articles.csv")
+
+romania_articles <- read.csv("data/romania_articles.csv")
+
+jcr <- read.csv("data/jcr-2022.csv") %>%
+  filter(Country.Region %in% c("POLAND", "ROMANIA"))
+
+scie <- read.csv("data/scie-2023.csv") %>%
+  mutate(collec = "scie")
+
+ssci <- read.csv("data/ssci-2023.csv") %>%
+  mutate(collec = "ssci")
+
+esci <- read.csv("data/esci-2023.csv") %>%
+  mutate(collec = "esci")
+
+ahci <- read.csv("data/ahci-2023.csv") %>%
+  mutate(collec = "ahci")
+
+wosjournal <- rbindlist(list(scie, scie, esci, ahci))
+
+ussr_year <- read_tsv("data/ussr-year-60-80.txt")
+ussr_cat <- read_tsv("data/ussr-category.txt")
+
+```
+
+```{r basic graphs}
+ussr_cat %>%
+  slice(1:10) %>%
+  ggplot(aes(x = fct_rev(fct_reorder(category, pct)), y = pct/100)) +
+  geom_col(fill = "dark red") +
+  scale_x_discrete(labels = c("Chemistry", "Physics", "Science and Tech", "Metallurgy", 
+                              "Materials Science", "Engineering", "Instruments", 
+                              "Biochemistry", "Polymers", "Pharmacology")) +
+  scale_y_continuous(labels = scales::percent) +
+  labs(title = "Articles published in the USSR, by category",
+       subtitle = "1965-1980",
+       x = "Year",
+       y = "% Articles Published") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1, size = 8))
+
+ggplot(ussr_cat, aes(x = year, y = count)) +
+  geom_col(fill = "dark red") +
+  labs(title = "Articles published in the USSR, by year",
+       subtitle = "1965-1980",
+       x = "Year",
+       y = "Articles Published") +
+  theme_classic()
+
+ggplot(poland_articles, aes(x = reorder(PY, sort(PY)))) +
+  geom_bar(fill = "grey") +
+  labs(title = "Articles published in Poland, by year",
+       subtitle = "1960-1980",
+       x = "Year",
+       y = "Articles Published",
+       source = "Web of Science Core Collection") +
+  theme_classic()
+
+poland_articles %>%
+  mutate(WC = as.factor(WC)) %>%
+  group_by(WC) %>%
+  count(sort = TRUE) %>%
+  ungroup() %>%
+  slice(1:10) %>%
+  ggplot(aes(x = fct_rev(fct_reorder(WC, n)), y = n)) +
+  geom_col(fill = "grey") +
+  scale_x_discrete(labels = c("Chemistry", "Pharmacology", "Physics", "Biology", 
+                              "Chem. Eng", "Mech Eng", "Astrophysics", 
+                              "Analytical Chemistry", "Engineering", "Biochemistry")) +
+  labs(title = "Articles published in Poland, by category",
+       subtitle = "1960-1980",
+       x = "Category",
+       y = "Articles Published",
+       source = "Web of Science Core Collection") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1, size = 8))
+
+poland_articles %>%
+  mutate(WC = as.factor(WC)) %>%
+  group_by(WC) %>%
+  count(sort = TRUE) %>%
+  ungroup() %>%
+  mutate(pct = n / sum(n)) %>%
+  slice(1:10) %>%
+  ggplot(aes(x = fct_rev(fct_reorder(WC, pct)), y = pct)) +
+  geom_col(fill = "pink") +
+  scale_x_discrete(labels = c("Chemistry", "Pharmacology", "Physics", "Biology", 
+                              "Chem. Eng", "Mech Eng", "Astrophysics", 
+                              "Analytical Chemistry", "Engineering", "Biochemistry")) +
+  scale_y_continuous(labels = scales::percent) +
+  labs(title = "Proportion of articles published in Poland, by category",
+       subtitle = "1960-1980",
+       x = "Category",
+       y = "% of Articles Published",
+       source = "Web of Science Core Collection") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1, size = 8))
+
+## By Five Years 1970-75
+poland_articles %>%
+  subset(PY %in% 1970:1975) %>%
+  mutate(WC = as.factor(WC)) %>%
+  group_by(WC) %>%
+  count(sort = TRUE) %>%
+  ungroup() %>%
+  slice(1:10) %>%
+  ggplot(aes(x = fct_rev(fct_reorder(WC, n)), y = n)) +
+  geom_col(fill = "grey") +
+  scale_x_discrete(labels = c("Chemistry", "Pharmacology", "Astrophysics", "Biology", 
+                              "Mech. Eng", "Physics", "Engineering", "Chem. Eng", 
+                              "Physiology", "Biochemistry")) +
+  labs(title = "Articles published in Poland, by category",
+       subtitle = "1970-1975",
+       x = "Category",
+       y = "Articles Published",
+       source = "Web of Science Core Collection") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1, size = 8))
+
+poland_articles %>%
+  subset(PY %in% 1970:1975) %>%
+  mutate(WC = as.factor(WC)) %>%
+  group_by(WC) %>%
+  count(sort = TRUE) %>%
+  ungroup() %>%
+  mutate(pct = n / sum(n)) %>%
+  slice(1:10) %>%
+  ggplot(aes(x = fct_rev(fct_reorder(WC, pct)), y = pct)) +
+  geom_col(fill = "grey") +
+  scale_x_discrete(labels = c("Chemistry", "Pharmacology", "Astrophysics", "Biology", 
+                              "Mech. Eng", "Physics", "Engineering", "Chem. Eng", 
+                              "Physiology", "Biochemistry")) +
+  scale_y_continuous(labels = scales::percent) +
+  labs(title = "Proportion of articles published in Poland, by category",
+       subtitle = "1970-1975",
+       x = "Category",
+       y = "% of Articles Published",
+       source = "Web of Science Core Collection") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1, size = 8))
+## Poland 1976-80
+poland_articles %>%
+  subset(PY %in% 1976:1980) %>%
+  mutate(WC = as.factor(WC)) %>%
+  group_by(WC) %>%
+  count(sort = TRUE) %>%
+  ungroup() %>%
+  slice(1:10) %>%
+  ggplot(aes(x = fct_rev(fct_reorder(WC, n)), y = n)) +
+  geom_col(fill = "grey") +
+  scale_x_discrete(labels = c("Chemistry", "Physics", "Pharm", "Biology", 
+                              "Chem. Eng", "Analytical Chem.", "Mech Eng.", 
+                              "Immunology", "Con. Matter Physics", "Plant Science")) +
+  labs(title = "Articles published in Poland, by category",
+       subtitle = "1976-1980",
+       x = "Category",
+       y = "Articles Published",
+       source = "Web of Science Core Collection") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1, size = 8))
+
+poland_articles %>%
+  subset(PY %in% 1976:1980) %>%
+  mutate(WC = as.factor(WC)) %>%
+  group_by(WC) %>%
+  count(sort = TRUE) %>%
+  ungroup() %>%
+  mutate(pct = n / sum(n)) %>%
+  slice(1:10) %>%
+  ggplot(aes(x = fct_rev(fct_reorder(WC, pct)), y = pct)) +
+  geom_col(fill = "grey") +
+  scale_x_discrete(labels = c("Chemistry", "Physics", "Pharmacology", "Biology", 
+                              "Chem. Eng", "Analytical Chem.", "Mech Eng.", 
+                              "Immunology", "Con. Matter Physics", "Plant Science")) +
+  scale_y_continuous(labels = scales::percent) +
+  labs(title = "Proportion of articles published in Poland, by category",
+       subtitle = "1976-1980",
+       x = "Category",
+       y = "% of Articles Published",
+       source = "Web of Science Core Collection") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1, size = 8))
+
+### ROMANIA ###
+
+ggplot(romania_articles, aes(x = reorder(PY, sort(PY)))) +
+  geom_bar(fill = "grey") +
+  labs(title = "Articles published in Romania, by year",
+       subtitle = "1965-1980",
+       x = "Year",
+       y = "Articles Published",
+       source = "Web of Science Core Collection") +
+  theme_classic()
+
+romania_articles %>%
+  mutate(WC = as.factor(WC)) %>%
+  group_by(WC) %>%
+  count(sort = TRUE) %>%
+  ungroup() %>%
+  slice(1:10) %>%
+  ggplot(aes(x = fct_rev(fct_reorder(WC, n)), y = n)) +
+  geom_col(fill = "grey") +
+  scale_x_discrete(labels = c("Physics", "Chemistry", "Medicine", "Biochemistry", 
+                              "Multidiscipline Science", "Mathematics", "Chem. Eng", 
+                              "Polymers", "Con. Matter Physics", "Analytical Chemistry")) +
+  labs(title = "Articles published in Romania, by category",
+       subtitle = "1965-1980",
+       x = "Category",
+       y = "Articles Published",
+       source = "Web of Science Core Collection") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1, size = 8))
+
+romania_articles %>%
+  mutate(WC = as.factor(WC)) %>%
+  group_by(WC) %>%
+  count(sort = TRUE) %>%
+  ungroup() %>%
+  mutate(pct = n / sum(n)) %>%
+  slice(1:10) %>%
+  ggplot(aes(x = fct_rev(fct_reorder(WC, pct)), y = pct)) +
+  geom_col(fill = "gold") +
+  scale_x_discrete(labels = c("Physics", "Chemistry", "Medicine", "Biochemistry", 
+                              "Multidiscipline Science", "Mathematics", "Chem. Eng", 
+                              "Polymers", "Con. Matter Physics", "Analytical Chemistry")) +
+  scale_y_continuous(labels = scales::percent) +
+  labs(title = "Proportion of articles published in Romania, by category",
+       subtitle = "1965-1980",
+       x = "Category",
+       y = "% of Articles Published",
+       source = "Web of Science Core Collection") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1, size = 8))
+
+```

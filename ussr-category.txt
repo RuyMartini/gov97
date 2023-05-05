@@ -1,0 +1,144 @@
+category	count	pct
+Chemistry	41791	22.240
+Physics	34347	18.278
+Science Technology Other Topics	16549	8.807
+Metallurgy Metallurgical Engineering	8996	4.787
+Materials Science	8029	4.273
+Engineering	7889	4.198
+Instruments Instrumentation	6037	3.213
+Biochemistry Molecular Biology	5974	3.179
+Polymer Science	5196	2.765
+Pharmacology Pharmacy	5051	2.688
+General Internal Medicine	4929	2.623
+Research Experimental Medicine	3699	1.968
+Infectious Diseases	3364	1.790
+Geochemistry Geophysics	3343	1.779
+Neurosciences Neurology	3116	1.658
+Astronomy Astrophysics	2968	1.579
+Biophysics	2881	1.533
+Energy Fuels	2606	1.387
+Oceanography	2534	1.349
+Cell Biology	2492	1.326
+Life Sciences Biomedicine Other Topics	2330	1.240
+Genetics Heredity	2207	1.174
+Crystallography	2199	1.170
+Electrochemistry	2152	1.145
+Thermodynamics	2093	1.114
+Mathematics	1979	1.053
+Microbiology	1901	1.012
+Pathology	1687	0.898
+Physiology	1663	0.885
+Virology	1465	0.780
+Oncology	1452	0.773
+Psychiatry	1381	0.735
+Meteorology Atmospheric Sciences	1318	0.701
+Toxicology	1252	0.666
+Psychology	1178	0.627
+Geology	1125	0.599
+Acoustics	1103	0.587
+Plant Sciences	1103	0.587
+Zoology	1015	0.540
+Dermatology	977	0.520
+Agriculture	851	0.453
+Nuclear Science Technology	848	0.451
+Mechanics	813	0.433
+Ophthalmology	741	0.394
+Geography	651	0.346
+Philosophy	644	0.343
+History	631	0.336
+Environmental Sciences Ecology	573	0.305
+Surgery	562	0.299
+Imaging Science Photographic Technology	558	0.297
+Optics	495	0.263
+Cardiovascular System Cardiology	433	0.230
+Education Educational Research	426	0.227
+Mining Mineral Processing	416	0.221
+Public Environmental Occupational Health	319	0.170
+Radiology Nuclear Medicine Medical Imaging	312	0.166
+Spectroscopy	299	0.159
+Mycology	298	0.159
+Government Law	296	0.158
+Marine Freshwater Biology	288	0.153
+Immunology	281	0.150
+Business Economics	278	0.148
+Food Science Technology	256	0.136
+Parasitology	241	0.128
+Biotechnology Applied Microbiology	177	0.094
+Computer Science	146	0.078
+Information Science Library Science	121	0.064
+Anthropology	113	0.060
+History Philosophy Of Science	104	0.055
+Endocrinology Metabolism	103	0.055
+Literature	102	0.054
+International Relations	97	0.052
+Mineralogy	91	0.048
+Social Sciences Other Topics	77	0.041
+Sport Sciences	77	0.041
+Mathematical Computational Biology	75	0.040
+Linguistics	66	0.035
+Arts Humanities Other Topics	56	0.030
+Hematology	56	0.030
+Veterinary Sciences	52	0.028
+Developmental Biology	50	0.027
+Behavioral Sciences	48	0.026
+Anatomy Morphology	47	0.025
+Automation Control Systems	47	0.025
+Transplantation	39	0.021
+Telecommunications	36	0.019
+Sociology	35	0.019
+Social Issues	33	0.018
+Microscopy	32	0.017
+Area Studies	30	0.016
+Gastroenterology Hepatology	30	0.016
+Water Resources	29	0.015
+Physical Geography	28	0.015
+Entomology	27	0.014
+Evolutionary Biology	25	0.013
+Public Administration	25	0.013
+Rheumatology	24	0.013
+Obstetrics Gynecology	23	0.012
+Pediatrics	23	0.012
+Paleontology	21	0.011
+Respiratory System	19	0.010
+Audiology Speech Language Pathology	18	0.010
+Geriatrics Gerontology	17	0.009
+Medical Laboratory Technology	17	0.009
+Archaeology	16	0.009
+Biomedical Social Sciences	16	0.009
+Fisheries	16	0.009
+Nutrition Dietetics	16	0.009
+Tropical Medicine	15	0.008
+Operations Research Management Science	14	0.007
+Urology Nephrology	14	0.007
+Health Care Sciences Services	11	0.006
+Otorhinolaryngology	10	0.005
+Substance Abuse	10	0.005
+Communication	9	0.005
+Emergency Medicine	9	0.005
+Rehabilitation	9	0.005
+Remote Sensing	9	0.005
+Allergy	8	0.004
+Criminology Penology	8	0.004
+Ethnic Studies	8	0.004
+Integrative Complementary Medicine	8	0.004
+Mathematical Methods In Social Sciences	8	0.004
+Asian Studies	7	0.004
+Demography	7	0.004
+Film Radio Television	7	0.004
+Art	6	0.003
+Urban Studies	6	0.003
+Biodiversity Conservation	4	0.002
+Forestry	4	0.002
+Legal Medicine	4	0.002
+Orthopedics	4	0.002
+Architecture	3	0.002
+Development Studies	3	0.002
+Construction Building Technology	2	0.001
+Dentistry Oral Surgery Medicine	2	0.001
+Music	2	0.001
+Religion	2	0.001
+Transportation	2	0.001
+Family Studies	1	0.001
+Reproductive Biology	1	0.001
+Theater	1	0.001
+1,297 record(s) (0.690%) do not contain data in the field being analyzed
